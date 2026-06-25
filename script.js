@@ -1,88 +1,74 @@
-// Gabarito oficial do sistema
-const gabarito = {
-    1: 'F', // Pergunta 1: IA não possui sentimentos/empatia nativos.
-    2: 'V'  // Pergunta 2: Human-in-the-loop defende controle humano final.
+// Gabarito oficial do quiz
+const gabarito = { 
+    1: 'F', // Questão 1 é Falsa
+    2: 'V'  // Questão 2 é Verdadeira
 };
 
-// Armazena as interações feitas pelo usuário
-let respostasUsuario = {};
+// Objeto para registrar as respostas escolhidas pelo usuário
+let respostas = {};
 
 /**
- * Avalia a resposta enviada pelo usuário, estiliza botões e exibe o feedback detalhado.
+ * Avalia a alternativa clicada pelo usuário, estiliza os botões e injeta o feedback explicativo.
+ * @param {number} perguntaNum - O ID da pergunta correspondente.
+ * @param {string} escolha - A opção selecionada ('V' ou 'F').
  */
-function verificarResposta(numeroQuestao, escolha) {
-    respostasUsuario[numeroQuestao] = escolha;
-
-    const feedbackElement = document.getElementById(`feedback-${numeroQuestao}`);
-    const cardQuestao = feedbackElement.closest('.quiz-item');
-    const botoes = cardQuestao.querySelectorAll('.btn');
+function checarResposta(perguntaNum, escolha) {
+    respostas[perguntaNum] = escolha;
     
-    // Reseta o estado visual anterior dos botões da respectiva questão
-    botoes.forEach(btn => {
-        btn.classList.remove('btn-selecionado-certo', 'btn-selecionado-errado');
-    });
-
-    // Identifica o elemento do botão clicado
-    const botaoClicado = escolha === 'V' ? cardQuestao.querySelector('.btn-true') : cardQuestao.querySelector('.btn-false');
-
-    // Validação lógica contra o gabarito
-    if (escolha === gabarito[numeroQuestao]) {
-        feedbackElement.textContent = "✓ Resposta Correta! " + (numeroQuestao === 1 
-            ? "A IA opera estritamente através de correlações matemáticas. Ela simula padrões inteligentes, mas não desenvolve senciência, sentimentos ou empatia real." 
-            : "Excelente! Manter humanos na tomada de decisões finais (Human-in-the-loop) mitiga falhas graves causadas por 'alucinações' estatísticas dos computadores.");
-        feedbackElement.className = "feedback feedback-certo";
-        botaoClicado.classList.add('btn-selecionado-certo');
+    const item = document.getElementById(`q${perguntaNum}`);
+    const feedback = document.getElementById(`feed-${perguntaNum}`);
+    const botoes = item.querySelectorAll('.btn');
+    
+    // Reseta o estado visual de ambos os botões da pergunta para evitar conflitos de cores
+    botoes.forEach(b => b.classList.remove('btn-selecionado-certo', 'btn-selecionado-errado'));
+    
+    // Identifica qual botão foi clicado
+    const btnSelecionado = escolha === 'V' ? botoes[0] : botoes[1];
+    
+    // Validação comparativa com o gabarito estruturado
+    if (escolha === gabarito[perguntaNum]) {
+        feedback.textContent = "✓ Correto! A afirmação condiz perfeitamente com a realidade técnica discutida.";
+        feedback.className = "feedback feedback-certo";
+        btnSelecionado.classList.add('btn-selecionado-certo');
     } else {
-        feedbackElement.textContent = "× Resposta Incorreta. " + (numeroQuestao === 1 
-            ? "Lembre-se: por mais avançado que um modelo de linguagem ou robô seja, ele não possui sentimentos ou autoconsciência." 
-            : "Atenção: sem o controle humano, sistemas autônomos tomariam decisões críticas sem nenhum tipo de discernimento moral ou ético.");
-        feedbackElement.className = "feedback feedback-errado";
-        botaoClicado.classList.add('btn-selecionado-errado');
+        feedback.textContent = "× Incorreto. Analise os conceitos estruturais apresentados nos textos acima.";
+        feedback.className = "feedback feedback-errado";
+        btnSelecionado.classList.add('btn-selecionado-errado');
     }
-
-    // Processa a contagem e renderização do placar final
-    atualizarPlacar();
-}
-
-/**
- * Verifica se o quiz foi concluído e calcula a nota total do usuário
- */
-function atualizarPlacar() {
-    const totalPerguntas = Object.keys(gabarito).length;
-    const respondidas = Object.keys(respostasUsuario).length;
     
-    if (respondidas === totalPerguntas) {
-        let acertos = 0;
-        for (let i in gabarito) {
-            if (respostasUsuario[i] === gabarito[i]) {
-                acertos++;
-            }
-        }
+    // Dispara o verificador do painel de resultados
+    verificarPontuacao();
+}
+
+/**
+ * Avalia se todas as perguntas foram respondidas e calcula o placar final.
+ */
+function verificarPontuacao() {
+    const totalPerguntas = Object.keys(gabarito).length;
+    
+    if (Object.keys(respostas).length === totalPerguntas) {
+        let totalAcertos = 0;
+        if (respostas[1] === gabarito[1]) totalAcertos++;
+        if (respostas[2] === gabarito[2]) totalAcertos++;
         
-        const placarContainer = document.getElementById('placar-final');
-        const placarTexto = document.getElementById('placar-texto');
-        
-        placarTexto.textContent = `Você acertou ${acertos} de ${totalPerguntas} afirmações baseadas no texto!`;
-        placarContainer.className = "placar-visivel";
+        document.getElementById('placar-texto').textContent = `Você acertou ${totalAcertos} de ${totalPerguntas} questões!`;
+        document.getElementById('placar-final').className = "placar-visivel";
     }
 }
 
 /**
- * Reseta os dados e a interface visual para reiniciar o jogo
+ * Reseta o estado da memória e os elementos HTML do quiz para uma nova tentativa.
  */
-function reiniciarQuiz() {
-    respostasUsuario = {};
+function resetarQuiz() {
+    respostas = {};
     document.getElementById('placar-final').className = "placar-oculto";
     
-    for (let i in gabarito) {
-        const feedback = document.getElementById(`feedback-${i}`);
+    for (let i = 1; i <= 2; i++) {
+        const feedback = document.getElementById(`feed-${i}`);
         feedback.textContent = "";
         feedback.className = "feedback";
         
-        const cardQuestao = feedback.closest('.quiz-item');
-        const botoes = cardQuestao.querySelectorAll('.btn');
-        botoes.forEach(btn => {
-            btn.classList.remove('btn-selecionado-certo', 'btn-selecionado-errado');
-        });
+        const item = document.getElementById(`q${i}`);
+        item.querySelectorAll('.btn').forEach(b => b.classList.remove('btn-selecionado-certo', 'btn-selecionado-errado'));
     }
 }
