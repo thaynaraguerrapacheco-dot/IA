@@ -1,0 +1,272 @@
+/* ==========================================================================
+   CONFIGURAÇÕES GERAIS E VARIÁVEIS
+   ========================================================================== */
+:root {
+    --bg-main: #f1f5f9;
+    --text-main: #334155;
+    --text-dark: #0f172a;
+    --text-light: #ffffff;
+    --card-bg: #ffffff;
+    
+    /* Cores Temáticas */
+    --primary: #1e40af;
+    --primary-light: #3b82f6;
+    --accent-good: #16a34a;
+    --accent-bad: #dc2626;
+    --accent-warn: #d97706;
+    
+    /* Estados do Quiz */
+    --success-bg: #dcfce7;
+    --success-border: #22c55e;
+    --error-bg: #fee2e2;
+    --error-border: #ef4444;
+    
+    /* Tipografia */
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   CABEÇALHO (HEADER)
+   ========================================================================== */
+header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    color: var(--text-light);
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
+.header-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+header h1 {
+    font-size: 2.25rem;
+    margin: 0 0 1rem 0;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+}
+
+header p {
+    font-size: 1.15rem;
+    margin: 0;
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   LAYOUT E ESTRUTURA DOS CARDS
+   ========================================================================== */
+.container {
+    max-width: 1000px;
+    margin: -2rem auto 4rem auto;
+    padding: 0 1rem;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.card h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+}
+
+/* Bordas temáticas decorativas */
+.positivo { border-top: 6px solid var(--accent-good); }
+.negativo { border-top: 6px solid var(--accent-bad); }
+.supervisao { border-left: 6px solid var(--accent-warn); }
+
+/* Listas customizadas */
+ul {
+    padding-left: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.75rem;
+}
+
+/* Imagens responsivas estilizadas via gradientes modernos em CSS puro */
+.image-placeholder {
+    width: 100%;
+    height: 240px;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+    background-size: cover;
+    background-position: center;
+}
+
+.bg-intro { background: linear-gradient(45deg, #3b82f6, #8b5cf6); position: relative; }
+.bg-intro::after { content: "🤖 IA & Redes Neurais"; position: absolute; bottom: 15px; left: 15px; color: white; font-weight: bold; font-size: 0.9rem; background: rgba(0,0,0,0.5); padding: 4px 10px; border-radius: 4px; }
+
+.bg-good { background: linear-gradient(45deg, #10b981, #059669); position: relative; }
+.bg-good::after { content: "🧬 Diagnósticos e Automação Médica"; position: absolute; bottom: 15px; left: 15px; color: white; font-weight: bold; font-size: 0.9rem; background: rgba(0,0,0,0.5); padding: 4px 10px; border-radius: 4px; }
+
+.bg-bad { background: linear-gradient(45deg, #ef4444, #991b1b); position: relative; }
+.bg-bad::after { content: "🔒 Vazamento de Dados e Vieses"; position: absolute; bottom: 15px; left: 15px; color: white; font-weight: bold; font-size: 0.9rem; background: rgba(0,0,0,0.5); padding: 4px 10px; border-radius: 4px; }
+
+.bg-human { background: linear-gradient(45deg, #f59e0b, #d97706); position: relative; }
+.bg-human::after { content: "🛡️ Supervisão Humana Ética"; position: absolute; bottom: 15px; left: 15px; color: white; font-weight: bold; font-size: 0.9rem; background: rgba(0,0,0,0.5); padding: 4px 10px; border-radius: 4px; }
+
+/* ==========================================================================
+   SEÇÃO DO QUIZ INTERATIVO
+   ========================================================================== */
+.quiz-intro {
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+    color: #64748b;
+}
+
+.quiz-item {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.pergunta {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.btn-group {
+    display: block;
+    margin-bottom: 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border: none;
+    margin-right: 0.5rem;
+}
+
+.btn-true { background-color: #e2e8f0; color: var(--text-dark); }
+.btn-true:hover { background-color: #cbd5e1; }
+.btn-false { background-color: #e2e8f0; color: var(--text-dark); }
+.btn-false:hover { background-color: #cbd5e1; }
+
+/* Estados ativos controlados pelo JavaScript */
+.btn-selecionado-certo { background-color: var(--accent-good) !important; color: white !important; }
+.btn-selecionado-errado { background-color: var(--accent-bad) !important; color: white !important; }
+
+/* Feedbacks das respostas */
+.feedback {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    display: none;
+}
+
+.feedback-certo {
+    display: block;
+    background-color: var(--success-bg);
+    color: #166534;
+    border-left: 4px solid var(--success-border);
+}
+
+.feedback-errado {
+    display: block;
+    background-color: var(--error-bg);
+    color: #991b1b;
+    border-left: 4px solid var(--error-border);
+}
+
+/* Placar de Resultados */
+.placar-oculto { display: none; }
+.placar-visivel {
+    display: block;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border: 2px solid #bbf7d0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.placar-visivel h3 { margin-top: 0; color: #166534; }
+.btn-reset { background-color: var(--text-dark); color: white; margin-top: 0.5rem; margin-right: 0; }
+.btn-reset:hover { background-color: #334155; }
+
+/* ==========================================================================
+   RODAPÉ (FOOTER)
+   ========================================================================== */
+footer {
+    background-color: #0f172a;
+    color: #94a3b8;
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE INTELIGENTE (DISPOSITIVOS MEDIOS E GRANDES)
+   ========================================================================== */
+@media (min-width: 768px) {
+    header { padding: 5rem 2rem; }
+    header h1 { font-size: 2.75rem; }
+    .container { margin-top: -3rem; }
+    
+    /* Organiza lado bom e lado ruim lado a lado no notebook/tablet de forma segura */
+    .grid-layout {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    .grid-layout::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    .grid-layout .positivo, 
+    .grid-layout .negativo {
+        float: left;
+        width: 48.5%;
+        margin-bottom: 0;
+        min-height: 520px;
+    }
+    .grid-layout .negativo {
+        float: right;
+    }
+    .image-placeholder { height: 200px; }
+}
+
+/* AJUSTES EXCLUSIVOS PARA TELAS DE CELULAR */
+@media (max-width: 767px) {
+    .card { padding: 1.5rem; }
+    header h1 { font-size: 1.8rem; }
+    .btn { width: 100%; margin-right: 0; margin-bottom: 0.5rem; text-align: center; }
+}
