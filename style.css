@@ -110,27 +110,17 @@ li {
     margin-bottom: 0.75rem;
 }
 
-/* Imagens responsivas estilizadas via gradientes modernos em CSS puro */
-.image-placeholder {
+/* Imagens Responsivas e Fluidas */
+.img-responsiva {
     width: 100%;
-    height: 240px;
+    height: auto;
+    max-height: 380px;
+    object-fit: cover;
     border-radius: 12px;
     margin-top: 1.5rem;
-    background-size: cover;
-    background-position: center;
+    display: block;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
-
-.bg-intro { background: linear-gradient(45deg, #3b82f6, #8b5cf6); position: relative; }
-.bg-intro::after { content: "🤖 IA & Redes Neurais"; position: absolute; bottom: 15px; left: 15px; color: white; font-weight: bold; font-size: 0.9rem; background: rgba(0,0,0,0.5); padding: 4px 10px; border-radius: 4px; }
-
-.bg-good { background: linear-gradient(45deg, #10b981, #059669); position: relative; }
-.bg-good::after { content: "🧬 Diagnósticos e Automação Médica"; position: absolute; bottom: 15px; left: 15px; color: white; font-weight: bold; font-size: 0.9rem; background: rgba(0,0,0,0.5); padding: 4px 10px; border-radius: 4px; }
-
-.bg-bad { background: linear-gradient(45deg, #ef4444, #991b1b); position: relative; }
-.bg-bad::after { content: "🔒 Vazamento de Dados e Vieses"; position: absolute; bottom: 15px; left: 15px; color: white; font-weight: bold; font-size: 0.9rem; background: rgba(0,0,0,0.5); padding: 4px 10px; border-radius: 4px; }
-
-.bg-human { background: linear-gradient(45deg, #f59e0b, #d97706); position: relative; }
-.bg-human::after { content: "🛡️ Supervisão Humana Ética"; position: absolute; bottom: 15px; left: 15px; color: white; font-weight: bold; font-size: 0.9rem; background: rgba(0,0,0,0.5); padding: 4px 10px; border-radius: 4px; }
 
 /* ==========================================================================
    SEÇÃO DO QUIZ INTERATIVO
@@ -256,12 +246,12 @@ footer {
         float: left;
         width: 48.5%;
         margin-bottom: 0;
-        min-height: 520px;
+        min-height: 570px; /* Ajustado para dar espaço às imagens nos cards */
     }
     .grid-layout .negativo {
         float: right;
     }
-    .image-placeholder { height: 200px; }
+    .img-responsiva { max-height: 220px; }
 }
 
 /* AJUSTES EXCLUSIVOS PARA TELAS DE CELULAR */
