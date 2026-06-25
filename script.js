@@ -1,7 +1,7 @@
 // Gabarito oficial do sistema
 const gabarito = {
-    1: 'F', // IA não possui sentimentos/empatia nativos.
-    2: 'V'  // Human-in-the-loop defende controle humano final.
+    1: 'F', // Pergunta 1: IA não possui sentimentos/empatia nativos.
+    2: 'V'  // Pergunta 2: Human-in-the-loop defende controle humano final.
 };
 
 // Armazena as interações feitas pelo usuário
