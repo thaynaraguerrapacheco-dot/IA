@@ -1,1 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Impacto da Inteligência Artificial</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <header>
+        <div class="header-container">
+            <h1>O Impacto da Inteligência Artificial</h1>
+            <p>Uma análise profunda sobre os benefícios, riscos e a indispensável supervisão humana.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="card intro-card">
+            <h2>O que é Inteligência Artificial?</h2>
+            <div class="card-content">
+                <p>A Inteligência Artificial (IA) representa a capacidade dos sistemas computacionais de simular processos cognitivos humanos, como aprendizado, raciocínio, tomada de decisão e autorregulação. Em vez de apenas seguir instruções estáticas, a IA analisa volumes massivos de dados para identificar padrões e evoluir continuamente.</p>
+            </div>
+            <div class="image-placeholder bg-intro"></div>
+        </section>
+
+        <div class="grid-layout">
+            <section class="card positivo">
+                <h2>🟢 O Lado Bom (Benefícios)</h2>
+                <p>A IA tem sido um motor de transformação positiva global, trazendo soluções para problemas complexos:</p>
+                <ul>
+                    <li><strong>Revolução na Medicina:</strong> Algoritmos de IA conseguem detectar tumores e patologias em estágios iniciais com precisão superior à média humana, além de acelerar a descoberta de novas vacinas e medicamentos.</li>
+                    <li><strong>Automação Inteligente:</strong> Execução de tarefas perigosas, insalubres ou repetitivas, permitindo que os profissionais humanos foquem em atividades estratégicas, criativas e de liderança.</li>
+                    <li><strong>Otimização e Sustentabilidade:</strong> Sistemas inteligentes gerenciam redes elétricas, otimizam o tráfego urbano e reduzem o desperdício de recursos na agricultura de precisão.</li>
+                </ul>
+                <div class="image-placeholder bg-good"></div>
+            </section>
+
+            <section class="card negativo">
+                <h2>🔴 O Lado Ruim (Riscos)</h2>
+                <p>O crescimento acelerado e desregulado da tecnologia também impõe desafios severos à sociedade:</p>
+                <ul>
+                    <li><strong>Deslocamento Profissional:</strong> A rápida automação pode extinguir milhões de postos de trabalho antes que a força de trabalho atual consiga se requalificar, gerando crises socioeconômicas.</li>
+                    <li><strong>Vieses Algorítmicos:</strong> Se treinada com dados históricos preconceituosos, a IA perpetua e amplifica discriminações raciais, de gênero e de classe em processos seletivos ou sistemas judiciais.</li>
+                    <li><strong>Disseminação de Desinformação:</strong> Ferramentas generativas facilitam a criação em massa de <em>deepfakes</em> e notícias falsas altamente realistas, ameaçando a estabilidade democrática.</li>
+                </ul>
+                <div class="image-placeholder bg-bad"></div>
+            </section>
+        </div>
+
+        <section class="card supervisao">
+            <h2>🛡️ A Importância Crucial da Supervisão Humana</h2>
+            <div class="card-content">
+                <p>Por mais sofisticada que uma Inteligência Artificial se torne, ela opera estritamente sob correlações matemáticas e estatísticas. A IA carece de <strong>consciência, empatia, discernimento moral e bom senso</strong>.</p>
+                <p>A abordagem conhecida como <em>"Human-in-the-loop"</em> (Humano no circuito) estabelece que o controle final de sistemas autônomos deve obrigatoriamente pertencer às pessoas. A supervisão humana atua como uma camada crítica de segurança, garantindo que as decisões tecnológicas estejam alinhadas aos direitos humanos, à ética coletiva e ao bom senso prático, mitigando erros catastróficos causados por "alucinações" dos modelos algorítmicos.</p>
+            </div>
+            <div class="image-placeholder bg-human"></div>
+        </section>
+
+        <section class="card quiz-section">
+            <h2>🧠 Desafio Interativo: Verdadeiro ou Falso?</h2>
+            <p class="quiz-intro">Aplique os conceitos discutidos acima para responder às afirmações a seguir:</p>
+            
+            <div id="quiz-container">
+                <div class="quiz-item">
+                    <p class="pergunta">1. Os algoritmos de IA são naturalmente neutros e totalmente livres de preconceitos humanos.</p>
+                    <div class="btn-group">
+                        <button class="btn btn-true" onclick="verificarResposta(1, 'V')">Verdadeiro (V)</button>
+                        <button class="btn btn-false" onclick="verificarResposta(1, 'F')">Falso (F)</button>
+                    </div>
+                    <div id="feedback-1" class="feedback"></div>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="pergunta">2. O conceito de "Human-in-the-loop" defende que o ser humano deve reter a palavra e o controle final sobre as decisões críticas da IA.</p>
+                    <div class="btn-group">
+                        <button class="btn btn-true" onclick="verificarResposta(2, 'V')">Verdadeiro (V)</button>
+                        <button class="btn btn-false" onclick="verificarResposta(2, 'F')">Falso (F)</button>
+                    </div>
+                    <div id="feedback-2" class="feedback"></div>
+                </div>
+            </div>
+            
+            <div id="placar-final" class="placar-oculto">
+                <h3>Resultado do seu Teste</h3>
+                <p id="placar-texto">Você acertou 0 de 2 perguntas.</p>
+                <button class="btn btn-reset" onclick="reiniciarQuiz()">Tentar Novamente</button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2026 - O Impacto da Inteligência Artificial. Desenvolvido para portfólio no GitHub.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
